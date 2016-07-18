@@ -1,6 +1,8 @@
 FROM drydock/u14jav:prod
 
-RUN apt-get update -qq ; apt-get install -qq lib32stdc++6 lib32z1 ; wget http://dl.google.com/android/android-sdk_r24.3.4-linux.tgz ; tar -zxf android-sdk_r24.3.4-linux.tgz
+RUN apt-get update -qq ; apt-get install -qq lib32stdc++6 lib32z1 ; apt-get clean
+
+RUN wget http://dl.google.com/android/android-sdk_r24.3.4-linux.tgz ; tar -zxf android-sdk_r24.3.4-linux.tgz ; rm android-sdk_r24.3.4-linux.tgz
 
 ENV ANDROID_HOME=/android-sdk-linux
 ENV PATH "/android-sdk-linux/tools:/android-sdk-linux/platform-tools:$PATH"
